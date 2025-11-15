@@ -1,0 +1,89 @@
+.spotify-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #333;
+  background-color: #1a1a1a29;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  width: 57%;
+  max-width: 1000px;
+
+
+  .spotify-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+}
+
+  &.offline {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem 1rem;
+
+    .spotify-icon {
+      font-size: 1.5rem;
+      color: #c084fc;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .spotify-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #d9aaff;
+    }
+
+    .spotify-subtitle {
+      font-size: 0.9rem;
+      color: #d9aaff;
+    }
+  }
+
+  img {
+    border-radius: 5px;
+  }
+
+  .spotify-info {
+    margin-left: 1rem;
+    flex: 1;
+    min-width: 0;
+
+    h2,
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    p {
+      margin: 0.2rem 0;
+      font-size: 0.9rem;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background-color: #444;
+      border-radius: 3px;
+      margin-top: 0.5rem;
+      overflow: hidden;
+
+      .progress {
+        height: 100%;
+        background-color: #1db954;
+        transition: width 1s linear;
+      }
+    }
+  }
+}
