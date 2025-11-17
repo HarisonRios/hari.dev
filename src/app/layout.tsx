@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Data Engineer — Harison Rios",
   description: "Portfólio - Harison Rios",
   icons: {
-    icon: '/logo2.png',
+    icon: '/logo.png',
   },
 };
 

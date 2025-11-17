@@ -1,11 +1,4 @@
 import Background from "../components/Background"
-import Link from 'next/link';
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuLink,
-} from '@/components/ui/navigation-menu';
 import NavigationMenuDemo from '@/components/NavigationMenuDemo';
 
 export default function Home() {
