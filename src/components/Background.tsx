@@ -84,7 +84,7 @@ type Props = {
   resolutionScale?: number;
 };
 
-export default function BackgroundEffect({
+export default function Background({
   hueShift = 0,
   noiseIntensity = 0,
   scanlineIntensity = 0,
