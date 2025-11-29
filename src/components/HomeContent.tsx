@@ -7,6 +7,7 @@ import { SpotifyCard } from '@/components/SpotifyCard';
 import { NowPlaying } from '@/components/NowPlaying';
 import { WeatherCard } from '@/components/WeatherCard';
 import { LanguageToggle } from '@/components/LanguageToggle';
+import { Footer } from '@/components/Footer';
 
 export const HomeContent = () => {
   return (
@@ -34,6 +35,8 @@ export const HomeContent = () => {
           <SpotifyCard />
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };

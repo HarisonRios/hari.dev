@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import NavigationMenuDemo from "@/components/NavigationMenuDemo";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { Footer } from "@/components/Footer";
 
 function ResumeContent() {
     const resumeRef = useRef<HTMLDivElement | null>(null);
@@ -163,9 +164,11 @@ function ResumeContent() {
                 </div>
 
                 
+                
+
             </div>
+
+            <Footer />
         </main>
     );
-}
-
-export default ResumeContent;
+}export default ResumeContent;

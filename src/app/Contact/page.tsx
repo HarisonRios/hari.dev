@@ -1,6 +1,7 @@
 import Background from '@/components/Background';
 import NavigationMenuDemo from '@/components/NavigationMenuDemo';
 import { LanguageToggle } from '@/components/LanguageToggle';
+import { Footer } from '@/components/Footer';
 
 export default function Contact() {
   return (
@@ -30,6 +31,8 @@ export default function Contact() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </main>
   );
 }
