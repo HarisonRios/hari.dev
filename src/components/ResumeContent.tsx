@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import NavigationMenuDemo from "@/components/NavigationMenuDemo";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { Footer } from "@/components/Footer";
+import { FiDownload } from "react-icons/fi";
 
 function ResumeContent() {
     const resumeRef = useRef<HTMLDivElement | null>(null);
@@ -38,10 +39,11 @@ function ResumeContent() {
                     <a
                         href="/Harison-CV.pdf"
                         download
-                        className="text-white font-poppins hover:text-purple-400 transition text-sm md:text-base"
+                        className="text-white font-poppins hover:text-purple-400 transition text-sm md:text-base flex items-center gap-2"
                         aria-label="Baixar currículo"
                     >
-                        {lang === "pt" ? "📥 Baixar CV" : "📥 Download CV"}
+                        <FiDownload size={18} />
+                        {lang === "pt" ? "Baixar CV" : "Download CV"}
                     </a>
                 </header>
 
@@ -163,12 +165,10 @@ function ResumeContent() {
                     </section>
                 </div>
 
-                
-                
-
+                <div className="w-full mt-12">
+                    <Footer />
+                </div>
             </div>
-
-            <Footer />
         </main>
     );
 }export default ResumeContent;

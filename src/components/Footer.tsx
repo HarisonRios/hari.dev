@@ -4,27 +4,27 @@ import { SiNextdotjs, SiTailwindcss } from 'react-icons/si';
 
 export const Footer = () => {
   return (
-    <footer className="w-full py-8 px-4 border-t border-white/10 bg-slate-900/30 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 text-gray-400 text-sm md:text-base">
+    <footer className="w-full py-4 px-4">
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 text-gray-400 text-xs md:text-sm">
         <span>Made by</span>
         <a 
           href="https://github.com/HarisonRios" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-white font-semibold hover:text-purple-400 transition-colors"
+          className="text-white hover:text-purple-400 transition-colors"
         >
           @harisonrios
         </a>
         <span>with</span>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1">
           <a 
             href="https://nextjs.org" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-white hover:text-purple-400 transition-colors flex items-center gap-1"
+            className="text-white hover:text-purple-400 transition-colors flex items-center gap-0.5"
             title="Next.js"
           >
-            <SiNextdotjs size={20} />
+            <SiNextdotjs size={14} />
             <span className="hidden sm:inline">Next</span>
           </a>
           <span>and</span>
@@ -32,10 +32,10 @@ export const Footer = () => {
             href="https://tailwindcss.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-white hover:text-purple-400 transition-colors flex items-center gap-1"
+            className="text-white hover:text-purple-400 transition-colors flex items-center gap-0.5"
             title="Tailwind CSS"
           >
-            <SiTailwindcss size={20} />
+            <SiTailwindcss size={14} />
             <span className="hidden sm:inline">Tailwind</span>
           </a>
         </div>
