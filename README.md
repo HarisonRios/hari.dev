@@ -1,4 +1,4 @@
-# Harison's Portfolio 🚀
+# Hari 🚀
 
 Um portfólio web moderno e responsivo construído com tecnologias cutting-edge. Apresenta integração em tempo real com Discord (Lanyard), exibição de música ao vivo do Spotify, previsão do tempo e muito mais.
 
