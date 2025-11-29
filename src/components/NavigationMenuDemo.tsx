@@ -17,17 +17,17 @@ export default function NavigationMenuDemo() {
     <NavigationMenu viewport={isMobile}>
       <NavigationMenuList
         className={`flex items-center ${
-          isMobile ? "gap-3" : "gap-6"
+          isMobile ? "gap-2" : "gap-4"
         }`}
       >
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <Link
               href="/"
-              className={`text-white rounded-md hover:bg-white/5 ${
+              className={`text-white rounded-md hover:text-purple-400 transition-colors ${
                 isMobile
-                  ? "text-base px-2 py-1"
-                  : "text-lg md:text-xl px-4 py-2"
+                  ? "text-xs px-2 py-1"
+                  : "text-sm px-3 py-1"
               }`}
             >
               Home
@@ -38,11 +38,11 @@ export default function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <Link
-              href="/projects"
-              className={`text-white rounded-md hover:bg-white/5 ${
+              href="/Projects"
+              className={`text-white rounded-md hover:text-purple-400 transition-colors ${
                 isMobile
-                  ? "text-base px-2 py-1"
-                  : "text-lg md:text-xl px-4 py-2"
+                  ? "text-xs px-2 py-1"
+                  : "text-sm px-3 py-1"
               }`}
             >
               Projects
@@ -53,11 +53,11 @@ export default function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <Link
-              href="/contact"
-              className={`text-white rounded-md hover:bg-white/5 ${
+              href="/Contact"
+              className={`text-white rounded-md hover:text-purple-400 transition-colors ${
                 isMobile
-                  ? "text-base px-2 py-1"
-                  : "text-lg md:text-xl px-4 py-2"
+                  ? "text-xs px-2 py-1"
+                  : "text-sm px-3 py-1"
               }`}
             >
               Contact
@@ -69,10 +69,10 @@ export default function NavigationMenuDemo() {
           <NavigationMenuLink asChild>
             <Link
               href="/Resume"
-              className={`text-white rounded-md hover:bg-white/5 ${
+              className={`text-white rounded-md hover:text-purple-400 transition-colors ${
                 isMobile
-                  ? "text-base px-2 py-1"
-                  : "text-lg md:text-xl px-4 py-2"
+                  ? "text-xs px-2 py-1"
+                  : "text-sm px-3 py-1"
               }`}
             >
               Resume
