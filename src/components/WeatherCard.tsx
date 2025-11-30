@@ -47,35 +47,42 @@ export const WeatherCard = () => {
   }, []);
 
   const getWeatherDescription = (code: number): string => {
-    if (code === 0) return 'Ensolarado';
-    if (code === 1 || code === 2) return 'Parcialmente nublado';
-    if (code === 3) return 'Nublado';
-    if (code === 45 || code === 48) return 'Névoa';
-    if (code >= 51 && code <= 67) return 'Chuva leve';
-    if (code >= 71 && code <= 77) return 'Neve';
-    if (code >= 80 && code <= 82) return 'Chuva forte';
-    if (code >= 85 && code <= 86) return 'Neve forte';
-    return 'Desconhecido';
+    if (code === 0) return 'Sunny';
+    if (code === 1 || code === 2) return 'Partly Cloudy';
+    if (code === 3) return 'Cloudy';
+    if (code === 45 || code === 48) return 'Foggy';
+    if (code >= 51 && code <= 67) return 'Light Rain';
+    if (code >= 71 && code <= 77) return 'Snow';
+    if (code >= 80 && code <= 82) return 'Heavy Rain';
+    if (code >= 85 && code <= 86) return 'Heavy Snow';
+    return 'Unknown';
   };
 
   if (loading) {
     return (
-      <div className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-6 backdrop-blur-sm h-full flex items-center justify-center">
-        <div className="animate-pulse text-gray-400">Carregando...</div>
+      <div className="bg-slate-800/30 border border-slate-700/30 rounded-lg p-6 backdrop-blur-sm h-full animate-pulse">
+        <div className="h-4 bg-slate-700 rounded w-24 mb-4" />
+        <div className="space-y-4">
+          <div className="h-4 bg-slate-700 rounded w-32" />
+          <div className="flex items-end gap-4">
+            <div className="h-20 bg-slate-700 rounded w-24" />
+            <div className="w-10 h-10 bg-slate-700 rounded" />
+          </div>
+        </div>
       </div>
     );
   }
 
   if (error || !weather) {
     return (
-      <div className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-6 backdrop-blur-sm h-full flex items-center justify-center">
-        <div className="text-gray-400 text-sm">{error || 'Dados indisponíveis'}</div>
+      <div className="bg-slate-800/30 border border-slate-700/30 rounded-lg p-6 backdrop-blur-sm h-full flex items-center justify-center">
+        <div className="text-gray-400 text-sm">{error || 'Data unavailable'}</div>
       </div>
     );
   }
 
   return (
-    <div className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-4 backdrop-blur-sm h-full flex flex-col justify-between">
+    <div className="bg-slate-800/30 border border-slate-700/30 rounded-lg p-4 backdrop-blur-sm h-full flex flex-col justify-between">
       <div>
         <p className="text-gray-400 text-xs mb-2">{weather.city}</p>
         <p className="text-gray-300 text-xs">{weather.description}</p>
@@ -83,16 +90,16 @@ export const WeatherCard = () => {
       
       <div className="flex items-end gap-4">
         <div>
-          <div className="text-7xl font-bold text-white leading-none">
+          <div className="text-9xl font-bold text-white leading-none">
             {weather.temperature}°
           </div>
-          <p className="text-gray-400 text-xs mt-2">Celsius</p>
+          <p className="text-lg text-gray-400 mt-2">°C</p>
         </div>
         
-        <div className="text-4xl mb-2">
-          {weather.description.includes('Chuva') ? (
+        <div className="text-5xl mb-4 ml-auto">
+          {weather.description.includes('Rain') ? (
             <CloudRain className="text-purple-400" />
-          ) : weather.description.includes('nublado') ? (
+          ) : weather.description.includes('Cloud') ? (
             <Cloud className="text-gray-400" />
           ) : (
             <Sun className="text-yellow-400" />

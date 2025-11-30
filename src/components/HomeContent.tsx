@@ -8,6 +8,7 @@ import { NowPlaying } from '@/components/NowPlaying';
 import { WeatherCard } from '@/components/WeatherCard';
 import { LanguageToggle } from '@/components/LanguageToggle';
 import { Footer } from '@/components/Footer';
+import { VSCOGallery } from '@/components/VSCOGallery';
 
 export const HomeContent = () => {
   return (
@@ -34,6 +35,10 @@ export const HomeContent = () => {
         <div className="mt-12">
           <SpotifyCard />
         </div>
+
+        {/* <div className="mt-12">
+          <VSCOGallery />
+        </div> */}
       </div>
 
       <Footer />

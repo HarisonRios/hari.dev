@@ -37,8 +37,8 @@ function ResumeContent() {
 
                 <header className="w-full mt-20 md:mt-28 mb-4 md:mb-6 flex flex-col items-center">
                     <a
-                        href="/Harison-CV.pdf"
-                        download
+                        href="/cv.pdf"
+                        download="Harison-CV.pdf"
                         className="text-white font-poppins hover:text-purple-400 transition text-sm md:text-base flex items-center gap-2"
                         aria-label="Baixar currículo"
                     >

@@ -2,6 +2,7 @@ import Background from '@/components/Background';
 import NavigationMenuDemo from '@/components/NavigationMenuDemo';
 import { LanguageToggle } from '@/components/LanguageToggle';
 import { Footer } from '@/components/Footer';
+import { PinnedProjects } from '@/components/PinnedProjects';
 
 export default function Projects() {
   return (
@@ -15,24 +16,15 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
-        <div className="flex flex-col items-center justify-center gap-6">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-              My Projects
-            </h1>
-            <p className="text-gray-400 text-lg md:text-xl">
-              This page is coming soon...
-            </p>
-          </div>
-          
-          <div className="text-5xl md:text-7xl animate-pulse">
-            🚀
-          </div>
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4 md:p-6">
+        <div className="w-full max-w-4xl mt-20 md:mt-28">
+          <PinnedProjects />
         </div>
       </div>
 
-      <Footer />
+      <div className="relative z-10 w-full mt-12">
+        <Footer />
+      </div>
     </main>
   );
 }
