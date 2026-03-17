@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/lib/translations';
 
 interface Album {
   name: string;
@@ -15,6 +17,8 @@ export const SpotifyCard: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { language } = useLanguage();
+  const t = translations[language];
 
   useEffect(() => {
     const fetchSpotifyData = async () => {
@@ -78,7 +82,7 @@ export const SpotifyCard: React.FC = () => {
           setAlbums(storedAlbums);
           setError(null);
         } else {
-          setError('Error loading Spotify data');
+          setError('load_error');
         }
       } finally {
         setLoading(false);
@@ -114,7 +118,9 @@ export const SpotifyCard: React.FC = () => {
   if (error) {
     return (
       <div className="p-6 bg-red-900/20 border border-red-700/50 rounded-lg">
-        <p className="text-red-400 text-sm">{error}</p>
+        <p className="text-red-400 text-sm">
+          {language === 'pt' ? 'Erro ao carregar dados do Spotify' : 'Error loading Spotify data'}
+        </p>
       </div>
     );
   }
@@ -129,12 +135,12 @@ export const SpotifyCard: React.FC = () => {
         >
           <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.84.6-1.26.3-3.239-1.98-8.159-2.58-12.061-1.419-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.361 9.504 15.021 10.189 18.591 12.3c.41.24.479.86.301 1.38zm.12-3.36C15.149 9.29 8.659 8.968 5.028 10.387c-.529.205-1.083-.158-1.288-.703-.205-.547.158-1.083.703-1.288 4.248-1.612 11.285-1.261 15.738 1.528.539.341.922 1.08.579 1.621-.342.538-1.080.922-1.621.579z" />
         </svg>
-        <h3 className="text-sm font-bold text-white">Last songs</h3>
+        <h3 className="text-sm font-bold text-white">{t.spotify.title}</h3>
       </div>
 
       {albums.length === 0 ? (
         <div className="text-center py-4">
-          <p className="text-gray-400 text-xs">No songs found</p>
+          <p className="text-gray-400 text-xs">{t.spotify.noSongs}</p>
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">

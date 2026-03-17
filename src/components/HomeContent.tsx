@@ -23,7 +23,7 @@ export const HomeContent = () => {
       
       <Hero />
       
-      <div className="w-full max-w-2xl mx-auto px-4 py-8">
+      <div className="w-full max-w-2xl mx-auto px-4 pt-4 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
           <WeatherCard />
           
@@ -36,9 +36,9 @@ export const HomeContent = () => {
           <SpotifyCard />
         </div>
 
-        {/* <div className="mt-12">
+        <div className="mt-12">
           <VSCOGallery />
-        </div> */}
+        </div>
       </div>
 
       <Footer />

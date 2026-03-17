@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/lib/translations';
 
 interface SpotifyNow {
   song: string;
@@ -25,6 +27,14 @@ export const NowPlaying = () => {
   const [spotify, setSpotify] = useState<SpotifyNow | null>(null);
   const [loading, setLoading] = useState(true);
   const [now, setNow] = useState(Date.now());
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  const idleTitle = language === 'pt' ? 'Curtindo o silencio?' : 'Enjoying the silence?';
+  const idleSubtitle =
+    language === 'pt'
+      ? 'O Harison nao esta escutando nada nesse momento'
+      : 'Play something on Spotify to see it here';
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -119,9 +129,9 @@ export const NowPlaying = () => {
           >
             <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.84.6-1.26.3-3.239-1.98-8.159-2.58-12.061-1.419-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.361 9.504 15.021 10.189 18.591 12.3c.41.24.479.86.301 1.38zm.12-3.36C15.149 9.29 8.659 8.968 5.028 10.387c-.529.205-1.083-.158-1.288-.703-.205-.547.158-1.083.703-1.288 4.248-1.612 11.285-1.261 15.738 1.528.539.341.922 1.08.579 1.621-.342.538-1.080.922-1.621.579z" />
           </svg>
-          <h3 className="text-sm font-bold text-white">Now Playing</h3>
-        </div>
-        
+        <h3 className="text-sm font-bold text-white">{t.nowPlaying.title}</h3>
+      </div>
+
         <div className="flex flex-col items-center justify-center gap-4 py-6">
           <div className="relative w-16 h-16 flex items-center justify-center">
             <div className="absolute inset-0 bg-linear-to-br from-purple-400/20 to-pink-500/20 rounded-full blur-lg animate-pulse"></div>
@@ -131,8 +141,8 @@ export const NowPlaying = () => {
           </div>
           
           <div className="text-center">
-            <p className="text-gray-400 text-sm font-medium">Enjoying the silence?</p>
-            <p className="text-gray-500 text-xs mt-1">Play something on Spotify to see it here</p>
+            <p className="text-gray-400 text-sm font-medium">{idleTitle}</p>
+            <p className="text-gray-500 text-xs mt-1">{idleSubtitle}</p>
           </div>
         </div>
       </div>
@@ -153,7 +163,7 @@ export const NowPlaying = () => {
         >
           <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.84.6-1.26.3-3.239-1.98-8.159-2.58-12.061-1.419-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.361 9.504 15.021 10.189 18.591 12.3c.41.24.479.86.301 1.38zm.12-3.36C15.149 9.29 8.659 8.968 5.028 10.387c-.529.205-1.083-.158-1.288-.703-.205-.547.158-1.083.703-1.288 4.248-1.612 11.285-1.261 15.738 1.528.539.341.922 1.08.579 1.621-.342.538-1.080.922-1.621.579z" />
         </svg>
-        <h3 className="text-sm font-bold text-white">Now Playing</h3>
+        <h3 className="text-sm font-bold text-white">{t.nowPlaying.title}</h3>
       </div>
 
       <div className="flex gap-3">

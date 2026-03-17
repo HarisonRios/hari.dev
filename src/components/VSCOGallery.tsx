@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/lib/translations';
 
 interface VSCOPhoto {
   id: string;
@@ -10,6 +12,8 @@ interface VSCOPhoto {
 }
 
 export const VSCOGallery = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [photos, setPhotos] = useState<VSCOPhoto[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -58,7 +62,7 @@ export const VSCOGallery = () => {
   if (loading) {
     return (
       <div className="w-full">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">My Photography</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">{t.vsco.title}</h2>
         <div className="aspect-square md:aspect-auto md:h-96 bg-slate-700 rounded-lg animate-pulse" />
       </div>
     );
@@ -67,28 +71,28 @@ export const VSCOGallery = () => {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-white">My Photography</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-white">{t.vsco.title}</h2>
         <a
           href="https://vsco.co/harisonrios"
           target="_blank"
           rel="noopener noreferrer"
           className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-2"
         >
-          View more <ExternalLink size={16} />
+          {t.vsco.viewMore} <ExternalLink size={16} />
         </a>
       </div>
 
       {photos.length === 0 ? (
         <div className="bg-slate-800/30 border border-slate-700/30 rounded-lg p-8 text-center">
-          <p className="text-gray-400 mb-4">Gallery setup needed</p>
-          <p className="text-gray-500 text-sm mb-4">Add NEXT_PUBLIC_VSCO_PHOTOS to .env</p>
+          <p className="text-gray-400 mb-4">{t.vsco.emptyTitle}</p>
+          <p className="text-gray-500 text-sm mb-4">{t.vsco.emptySubtitle}</p>
           <a
             href="https://vsco.co/harisonrios"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-purple-400 hover:text-purple-300 transition-colors"
           >
-            Visit my VSCO profile
+            {t.vsco.visitProfile}
           </a>
         </div>
       ) : (
@@ -111,7 +115,7 @@ export const VSCOGallery = () => {
               
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-end justify-end p-6">
                 <div className="text-white text-sm">
-                  <p className="font-semibold">Open on VSCO</p>
+                  <p className="font-semibold">{t.vsco.openOn}</p>
                 </div>
               </div>
             </div>
@@ -120,7 +124,7 @@ export const VSCOGallery = () => {
           <button
             onClick={goToPrevious}
             className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors z-10"
-            aria-label="Previous photo"
+            aria-label={t.vsco.prevPhoto}
           >
             <ChevronLeft size={24} />
           </button>
@@ -128,7 +132,7 @@ export const VSCOGallery = () => {
           <button
             onClick={goToNext}
             className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors z-10"
-            aria-label="Next photo"
+            aria-label={t.vsco.nextPhoto}
           >
             <ChevronRight size={24} />
           </button>
@@ -143,7 +147,7 @@ export const VSCOGallery = () => {
                     ? 'bg-purple-500 w-8'
                     : 'bg-slate-600 hover:bg-slate-500 w-2'
                 }`}
-                aria-label={`Go to photo ${idx + 1}`}
+                aria-label={`${t.vsco.goToPhoto} ${idx + 1}`}
               />
             ))}
           </div>

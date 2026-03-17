@@ -17,32 +17,37 @@ import {
   SiNextdotjs,
   SiVite,
   SiDocker,
-} from "react-icons/si";
+} from 'react-icons/si';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/lib/translations';
 
 const allTechItems = [
-  { name: "TypeScript", icon: <SiTypescript />, color: "text-blue-400" },
-  { name: "Javascript", icon: <SiJavascript />, color: "text-yellow-400" },
-  { name: "Python", icon: <SiPython />, color: "text-blue-600" },
-  { name: "MongoDB", icon: <SiMongodb />, color: "text-green-500" },
-  { name: "Node.js", icon: <SiNodedotjs />, color: "text-green-600" },
-  { name: "React", icon: <SiReact />, color: "text-cyan-400" },
-  { name: "PHP", icon: <SiPhp />, color: "text-purple-500" },
-  { name: "MySQL", icon: <SiMysql />, color: "text-blue-700" },
-  { name: "Sass", icon: <SiSass />, color: "text-pink-400" },
-  { name: "CSS3", icon: <SiCss3 />, color: "text-blue-500" },
-  { name: "Next.js", icon: <SiNextdotjs />, color: "text-white" },
-  { name: "Vite", icon: <SiVite />, color: "text-purple-400" },
-  { name: "Git", icon: <SiGit />, color: "text-orange-600" },
-  { name: "GitHub", icon: <SiGithub />, color: "text-gray-300" },
-  { name: "AWS", icon: <SiAmazon />, color: "text-orange-500" },
-  { name: "Docker", icon: <SiDocker />, color: "text-blue-400" },
+  { name: 'TypeScript', icon: <SiTypescript />, color: 'text-blue-400' },
+  { name: 'Javascript', icon: <SiJavascript />, color: 'text-yellow-400' },
+  { name: 'Python', icon: <SiPython />, color: 'text-blue-600' },
+  { name: 'MongoDB', icon: <SiMongodb />, color: 'text-green-500' },
+  { name: 'Node.js', icon: <SiNodedotjs />, color: 'text-green-600' },
+  { name: 'React', icon: <SiReact />, color: 'text-cyan-400' },
+  { name: 'PHP', icon: <SiPhp />, color: 'text-purple-500' },
+  { name: 'MySQL', icon: <SiMysql />, color: 'text-blue-700' },
+  { name: 'Sass', icon: <SiSass />, color: 'text-pink-400' },
+  { name: 'CSS3', icon: <SiCss3 />, color: 'text-blue-500' },
+  { name: 'Next.js', icon: <SiNextdotjs />, color: 'text-white' },
+  { name: 'Vite', icon: <SiVite />, color: 'text-purple-400' },
+  { name: 'Git', icon: <SiGit />, color: 'text-orange-600' },
+  { name: 'GitHub', icon: <SiGithub />, color: 'text-gray-300' },
+  { name: 'AWS', icon: <SiAmazon />, color: 'text-orange-500' },
+  { name: 'Docker', icon: <SiDocker />, color: 'text-blue-400' },
 ];
 
 export const TechStack = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <div className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-4 backdrop-blur-sm h-full">
       <div className="mb-4">
-        <h2 className="text-sm font-bold text-white">Stack</h2>
+        <h2 className="text-sm font-bold text-white">{t.techStack.title}</h2>
       </div>
 
       <div className="grid grid-cols-4 gap-6">

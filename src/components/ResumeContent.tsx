@@ -1,28 +1,15 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import NavigationMenuDemo from "@/components/NavigationMenuDemo";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { Footer } from "@/components/Footer";
 import { FiDownload } from "react-icons/fi";
+import { useLanguage } from "@/context/LanguageContext";
 
 function ResumeContent() {
     const resumeRef = useRef<HTMLDivElement | null>(null);
-    const [lang, setLang] = useState<"pt" | "en">("pt");
-
-    useEffect(() => {
-        const handleLanguageChange = () => {
-            const saved = localStorage.getItem('selectedLanguage') as 'pt' | 'en' | null;
-            if (saved) {
-                setLang(saved);
-            }
-        };
-
-        window.addEventListener('storage', handleLanguageChange);
-        handleLanguageChange();
-
-        return () => window.removeEventListener('storage', handleLanguageChange);
-    }, []);
+    const { language: lang } = useLanguage();
 
     return (
         <main className="min-h-screen flex items-center justify-center p-4 md:p-6" style={{ background: "#170329" }} suppressHydrationWarning> 

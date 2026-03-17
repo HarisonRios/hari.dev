@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { SiGithub } from 'react-icons/si';
 import { ExternalLink } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface Repository {
   name: string;
@@ -18,6 +19,26 @@ export const PinnedProjects = () => {
   const [repos, setRepos] = useState<Repository[]>([]);
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState<string>('');
+  const { language } = useLanguage();
+
+  const copy = {
+    en: {
+      title: 'My Projects',
+      profile: 'GitHub Profile',
+      viewAll: 'View all repositories',
+      noDescription: 'No description',
+      developer: 'Developer',
+    },
+    pt: {
+      title: 'Meus Projetos',
+      profile: 'Perfil do GitHub',
+      viewAll: 'Ver todos os repositorios',
+      noDescription: 'Sem descricao',
+      developer: 'Desenvolvedor',
+    },
+  } as const;
+
+  const t = copy[language];
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -67,15 +88,15 @@ export const PinnedProjects = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setUserName(data.data.user.name || 'Developer');
+          setUserName(data.data.user.name || t.developer);
           const pinnedRepos = data.data.user.pinnedItems.edges.map((edge: any) => ({
             name: edge.node.name,
-            description: edge.node.description || 'Sem descrição',
+            description: edge.node.description || t.noDescription,
             url: edge.node.url,
             languages: edge.node.languages.nodes.map((lang: any) => lang.name).slice(0, 5),
             stars: edge.node.stargazerCount,
             commits: edge.node.defaultBranchRef?.target?.history?.totalCount || 0,
-            userName: data.data.user.name || 'Developer',
+            userName: data.data.user.name || t.developer,
           }));
           setRepos(pinnedRepos);
         }
@@ -87,11 +108,11 @@ export const PinnedProjects = () => {
     };
 
     fetchRepos();
-  }, []);
+  }, [t.developer, t.noDescription]);
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">My Projects</h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">{t.title}</h2>
 
       <a
         href="https://github.com/HarisonRios"
@@ -103,8 +124,8 @@ export const PinnedProjects = () => {
           <div className="flex items-center gap-3">
             <SiGithub size={32} className="text-purple-400" />
             <div>
-              <h3 className="text-lg font-bold text-white">{userName || 'GitHub Profile'}</h3>
-              <p className="text-xs md:text-sm text-gray-400">View all repositories</p>
+              <h3 className="text-lg font-bold text-white">{userName || t.profile}</h3>
+              <p className="text-xs md:text-sm text-gray-400">{t.viewAll}</p>
             </div>
           </div>
         </div>

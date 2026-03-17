@@ -1,41 +1,20 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export const LanguageToggle = () => {
-  const [language, setLanguage] = useState<'pt' | 'en'>('en');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const saved = localStorage.getItem('selectedLanguage') as 'pt' | 'en' | null;
-    if (saved && (saved === 'pt' || saved === 'en')) {
-      setLanguage(saved);
-    } else {
-      localStorage.setItem('selectedLanguage', 'en');
-      setLanguage('en');
-    }
-  }, []);
+  const { language, setLanguage } = useLanguage();
 
   const toggleLanguage = () => {
-    const newLang = language === 'pt' ? 'en' : 'pt';
-    setLanguage(newLang);
-    localStorage.setItem('selectedLanguage', newLang);
-    window.dispatchEvent(new StorageEvent('storage', {
-      key: 'selectedLanguage',
-      newValue: newLang,
-      oldValue: language,
-      storageArea: localStorage
-    }));
+    setLanguage(language === 'pt' ? 'en' : 'pt');
   };
-
-  if (!mounted) return null;
 
   return (
     <button
       onClick={toggleLanguage}
-      className="fixed top-6 right-6 z-50 p-2 md:p-3 bg-slate-900/90 border border-slate-700/60 text-white rounded-md hover:bg-slate-800 hover:text-purple-400 transition-all duration-300 flex items-center justify-center shadow-lg"
-      title="Toggle between Brazil and USA"
+      className="fixed bottom-6 right-6 lg:top-6 lg:bottom-auto z-50 p-2 md:p-3 bg-slate-900/90 border border-slate-700/60 text-white rounded-md hover:bg-slate-800 hover:text-purple-400 transition-all duration-300 flex items-center justify-center shadow-lg"
+      title={language === 'pt' ? 'Mudar para ingles' : 'Switch to portuguese'}
+      type="button"
     >
       <span className="text-2xl md:text-3xl">
         {language === 'pt' ? (

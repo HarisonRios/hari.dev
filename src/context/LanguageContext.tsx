@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Language } from '@/lib/translations';
 
 interface LanguageContextType {
@@ -8,41 +8,23 @@ interface LanguageContextType {
   setLanguage: (lang: Language) => void;
 }
 
+const STORAGE_KEY = 'language';
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>('en');
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const saved = localStorage.getItem('language') as Language | null;
-    if (saved && (saved === 'en' || saved === 'pt')) {
+    const saved = localStorage.getItem(STORAGE_KEY) as Language | null;
+    if (saved === 'en' || saved === 'pt') {
       setLanguageState(saved);
     }
   }, []);
 
-  useEffect(() => {
-    // Ouve mudanças de linguagem do LanguageToggle
-    const handleLanguageChange = () => {
-      const saved = localStorage.getItem('language') as Language | null;
-      if (saved && (saved === 'en' || saved === 'pt')) {
-        setLanguageState(saved);
-      }
-    };
-
-    window.addEventListener('languageChange', handleLanguageChange);
-    return () => window.removeEventListener('languageChange', handleLanguageChange);
-  }, []);
-
   const updateLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem('language', lang);
+    localStorage.setItem(STORAGE_KEY, lang);
   };
-
-  if (!mounted) {
-    return <>{children}</>;
-  }
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage: updateLanguage }}>

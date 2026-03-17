@@ -3,6 +3,8 @@
 import * as React from "react"
 import Link from "next/link"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { useLanguage } from "@/context/LanguageContext"
+import { translations } from "@/lib/translations"
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -12,6 +14,8 @@ import {
 
 export default function NavigationMenuDemo() {
   const isMobile = useIsMobile()
+  const { language } = useLanguage()
+  const t = translations[language]
 
   return (
     <NavigationMenu viewport={isMobile}>
@@ -30,7 +34,7 @@ export default function NavigationMenuDemo() {
                   : "text-sm px-3 py-1"
               }`}
             >
-              Home
+              {t.nav.home}
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
@@ -45,7 +49,7 @@ export default function NavigationMenuDemo() {
                   : "text-sm px-3 py-1"
               }`}
             >
-              Projects
+              {t.nav.projects}
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
@@ -60,7 +64,7 @@ export default function NavigationMenuDemo() {
                   : "text-sm px-3 py-1"
               }`}
             >
-              Contact
+              {t.nav.contact}
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
@@ -75,7 +79,7 @@ export default function NavigationMenuDemo() {
                   : "text-sm px-3 py-1"
               }`}
             >
-              Resume
+              {t.nav.resume}
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>

@@ -10,8 +10,9 @@ export const translations = {
     // Hero
     hero: {
       name: 'Harison Rios',
-      title: 'Data Engineer • 20 years old',
-      location: 'São Paulo, Brazil',
+      title: 'FullStack Developer • @Stefanini Brazil',
+      subtitle: '20 years old',
+      location: 'Sao Paulo, Brazil',
       description: 'On my free time, I develop ',
       fullstack: 'full-stack',
       solutions: ' solutions and dive into worlds of ',
@@ -36,6 +37,18 @@ export const translations = {
       title: 'Last songs',
       noSongs: 'No songs found',
     },
+    // VSCO Gallery
+    vsco: {
+      title: 'My Photography',
+      viewMore: 'View more',
+      emptyTitle: 'Gallery setup needed',
+      emptySubtitle: 'Add NEXT_PUBLIC_VSCO_PHOTOS to .env',
+      visitProfile: 'Visit my VSCO profile',
+      openOn: 'Open on VSCO',
+      prevPhoto: 'Previous photo',
+      nextPhoto: 'Next photo',
+      goToPhoto: 'Go to photo',
+    },
   },
   pt: {
     // Navigation
@@ -48,8 +61,9 @@ export const translations = {
     // Hero
     hero: {
       name: 'Harison Rios',
-      title: 'Engenheiro de Dados • 20 anos',
-      location: 'São Paulo, Brasil',
+      title: 'Desenvolvedor FullStack • @Stefanini Brasil',
+      subtitle: '20 anos',
+      location: 'Sao Paulo, Brasil',
       description: 'No tempo livre, desenvolvo ',
       fullstack: 'soluções full-stack',
       solutions: ' e mergulho em mundos de ',
@@ -73,6 +87,18 @@ export const translations = {
     spotify: {
       title: 'Últimas músicas',
       noSongs: 'Nenhuma música encontrada',
+    },
+    // VSCO Gallery
+    vsco: {
+      title: 'Minhas Fotos',
+      viewMore: 'Ver mais',
+      emptyTitle: 'Galeria precisa de configuracao',
+      emptySubtitle: 'Configure NEXT_PUBLIC_VSCO_PHOTOS no .env',
+      visitProfile: 'Visitar meu VSCO',
+      openOn: 'Abrir no VSCO',
+      prevPhoto: 'Foto anterior',
+      nextPhoto: 'Proxima foto',
+      goToPhoto: 'Ir para foto',
     },
   },
 };
