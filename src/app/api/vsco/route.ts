@@ -15,7 +15,8 @@ export async function GET() {
       `https://vsco\\.co/${username}/media/[A-Za-z0-9]+`,
       'g'
     );
-    const pairRegex = /\[!\[[^\]]*\]\(([^)]*)\)\]\(([^)]*)\)/g;
+    const pairRegex =
+      /\[!\[[^\]]*\]\(\s*(https?:\/\/[^\s)]+)\s*\)\]\(\s*(https?:\/\/[^\s)]+)\s*\)/g;
     const allowlistRaw = process.env.VSCO_MEDIA_ALLOWLIST ?? '';
 
     const getMediaId = (link: string) => {
@@ -28,8 +29,6 @@ export async function GET() {
       const cleanId = idPart.split(/[/?#]/)[0];
       return cleanId || null;
     };
-
-    const sanitizeUrlCandidate = (value: string) => value.replace(/\s+/g, '').trim();
 
     const getMediaIdFromImageUrl = (imageUrl: string) => {
       try {
@@ -93,15 +92,8 @@ export async function GET() {
       const pairedMatches = Array.from(text.matchAll(pairRegex));
       if (pairedMatches.length > 0) {
         for (const match of pairedMatches) {
-          const rawImage = sanitizeUrlCandidate(match[1]);
-          const rawLink = sanitizeUrlCandidate(match[2]);
-
-          if (!rawImage.startsWith('http')) {
-            continue;
-          }
-
-          const imageUrl = boostVscoImageUrl(rawImage);
-          const link = rawLink.startsWith('http') ? rawLink : `${profileUrl}/gallery`;
+          const imageUrl = boostVscoImageUrl(match[1]);
+          const link = match[2];
           const mediaIdFromLink = getMediaId(link);
           const mediaIdFromImage = getMediaIdFromImageUrl(imageUrl);
           const mediaId = mediaIdFromLink ?? mediaIdFromImage;
@@ -112,7 +104,7 @@ export async function GET() {
 
           photos.push({
             imageUrl,
-            link: mediaIdFromLink ? link : `${profileUrl}/media/${mediaId}`,
+            link,
             mediaId,
           });
         }
@@ -124,11 +116,9 @@ export async function GET() {
       const mediaMatches = text.match(mediaRegex) || [];
 
       for (let i = 0; i < imageMatches.length; i += 1) {
-        const imageUrl = boostVscoImageUrl(sanitizeUrlCandidate(imageMatches[i]));
+        const imageUrl = boostVscoImageUrl(imageMatches[i]);
         const mediaIdFromImage = getMediaIdFromImageUrl(imageUrl);
-        const mediaIdFromLink = mediaMatches[i]
-          ? getMediaId(sanitizeUrlCandidate(mediaMatches[i]))
-          : null;
+        const mediaIdFromLink = mediaMatches[i] ? getMediaId(mediaMatches[i]) : null;
         const mediaId = mediaIdFromLink ?? mediaIdFromImage;
 
         if (!mediaId) {
