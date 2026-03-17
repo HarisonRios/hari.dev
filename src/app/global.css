@@ -75,6 +75,15 @@ html, body {
   animation: popUp 0.25s ease-out forwards;
 }
 
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* theme variables removed - using :root variables instead */
 
 .dark {
