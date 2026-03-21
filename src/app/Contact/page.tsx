@@ -1,8 +1,19 @@
+import type { Metadata } from 'next';
 import Background from '@/components/Background';
 import NavigationMenuDemo from '@/components/NavigationMenuDemo';
 import { LanguageToggle } from '@/components/LanguageToggle';
 import { Footer } from '@/components/Footer';
 import { ContactForm } from '@/components/ContactForm';
+import { PageTransition } from '@/components/PageTransition';
+
+export const metadata: Metadata = {
+  title: 'Contact — Harison Rios',
+  description: 'Get in touch with Harison Rios — FullStack Developer from São Paulo. Send a message or connect via LinkedIn.',
+  openGraph: {
+    title: 'Contact — Harison Rios',
+    description: 'Get in touch with Harison Rios — FullStack Developer from São Paulo.',
+  },
+};
 
 export default function Contact() {
   return (
@@ -18,7 +29,9 @@ export default function Contact() {
 
       <div className="relative z-10 min-h-screen flex items-center justify-center p-4 md:p-6">
         <div className="w-full max-w-2xl mt-20 md:mt-28">
-          <ContactForm />
+          <PageTransition>
+            <ContactForm />
+          </PageTransition>
         </div>
       </div>
 

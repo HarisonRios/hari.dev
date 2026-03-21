@@ -12,7 +12,7 @@ function ResumeContent() {
     const { language: lang } = useLanguage();
 
     return (
-        <main className="min-h-screen flex items-center justify-center p-4 md:p-6" style={{ background: "#170329" }} suppressHydrationWarning> 
+        <main className="min-h-screen flex items-center justify-center p-4 md:p-6 bg-slate-950" suppressHydrationWarning>
             <LanguageToggle />
             
             <div className="w-full max-w-5xl mx-auto flex flex-col items-center">

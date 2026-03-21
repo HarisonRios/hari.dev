@@ -12,7 +12,6 @@ interface Repository {
   languages: string[];
   stars: number;
   commits: number;
-  userName: string;
 }
 
 export const PinnedProjects = () => {
@@ -26,15 +25,15 @@ export const PinnedProjects = () => {
       title: 'My Projects',
       profile: 'GitHub Profile',
       viewAll: 'View all repositories',
+      noRepos: 'No pinned repositories found',
       noDescription: 'No description',
-      developer: 'Developer',
     },
     pt: {
       title: 'Meus Projetos',
       profile: 'Perfil do GitHub',
       viewAll: 'Ver todos os repositorios',
+      noRepos: 'Nenhum repositorio pinado encontrado',
       noDescription: 'Sem descricao',
-      developer: 'Desenvolvedor',
     },
   } as const;
 
@@ -43,62 +42,12 @@ export const PinnedProjects = () => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const query = `
-          query {
-            user(login: "${process.env.NEXT_PUBLIC_GITHUB_USERNAME}") {
-              name
-              pinnedItems(first: 6, types: REPOSITORY) {
-                edges {
-                  node {
-                    ... on Repository {
-                      name
-                      description
-                      url
-                      languages(first: 5) {
-                        nodes {
-                          name
-                        }
-                      }
-                      stargazerCount
-                      defaultBranchRef {
-                        target {
-                          ... on Commit {
-                            history(first: 1) {
-                              totalCount
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        `;
+        const response = await fetch('/api/github/pinned');
+        const data = await response.json();
 
-        const response = await fetch('https://api.github.com/graphql', {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ query }),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setUserName(data.data.user.name || t.developer);
-          const pinnedRepos = data.data.user.pinnedItems.edges.map((edge: any) => ({
-            name: edge.node.name,
-            description: edge.node.description || t.noDescription,
-            url: edge.node.url,
-            languages: edge.node.languages.nodes.map((lang: any) => lang.name).slice(0, 5),
-            stars: edge.node.stargazerCount,
-            commits: edge.node.defaultBranchRef?.target?.history?.totalCount || 0,
-            userName: data.data.user.name || t.developer,
-          }));
-          setRepos(pinnedRepos);
+        if (data.repos && Array.isArray(data.repos)) {
+          setRepos(data.repos);
+          setUserName(data.userName ?? '');
         }
       } catch (error) {
         console.error('Erro ao buscar repositórios:', error);
@@ -108,7 +57,7 @@ export const PinnedProjects = () => {
     };
 
     fetchRepos();
-  }, [t.developer, t.noDescription]);
+  }, []);
 
   return (
     <div className="w-full max-w-4xl mx-auto">
@@ -153,6 +102,11 @@ export const PinnedProjects = () => {
             </div>
           ))}
         </div>
+      ) : repos.length === 0 ? (
+        <div className="bg-slate-800/30 border border-slate-700/30 rounded-lg p-8 text-center">
+          <SiGithub size={32} className="text-slate-600 mx-auto mb-3" />
+          <p className="text-gray-400 text-sm">{t.noRepos}</p>
+        </div>
       ) : (
         <div className="space-y-4">
           {repos.map((repo) => (
@@ -170,11 +124,14 @@ export const PinnedProjects = () => {
                       {repo.name}
                     </h3>
                     <p className="text-sm md:text-base text-gray-300 mb-3 line-clamp-2">
-                      {repo.description}
+                      {repo.description || t.noDescription}
                     </p>
                     <div className="flex items-center gap-2 flex-wrap">
-                      {repo.languages.length > 0 && repo.languages.slice(0, 3).map((lang, idx) => (
-                        <span key={idx} className="text-xs md:text-sm px-2 py-1 bg-purple-500/20 text-purple-300 rounded-full">
+                      {repo.languages.slice(0, 3).map((lang, idx) => (
+                        <span
+                          key={idx}
+                          className="text-xs md:text-sm px-2 py-1 bg-purple-500/20 text-purple-300 rounded-full"
+                        >
                           {lang}
                         </span>
                       ))}

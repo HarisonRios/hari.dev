@@ -17,27 +17,39 @@ import {
   SiNextdotjs,
   SiVite,
   SiDocker,
+  SiSpring,
+  SiAngular,
+  SiPostgresql,
+  SiTailwindcss,
 } from 'react-icons/si';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/lib/translations';
 
 const allTechItems = [
+  // Linguagens
   { name: 'TypeScript', icon: <SiTypescript />, color: 'text-blue-400' },
   { name: 'Javascript', icon: <SiJavascript />, color: 'text-yellow-400' },
   { name: 'Python', icon: <SiPython />, color: 'text-blue-600' },
-  { name: 'MongoDB', icon: <SiMongodb />, color: 'text-green-500' },
-  { name: 'Node.js', icon: <SiNodedotjs />, color: 'text-green-600' },
-  { name: 'React', icon: <SiReact />, color: 'text-cyan-400' },
   { name: 'PHP', icon: <SiPhp />, color: 'text-purple-500' },
-  { name: 'MySQL', icon: <SiMysql />, color: 'text-blue-700' },
+  // Frameworks & Libs
+  { name: 'React', icon: <SiReact />, color: 'text-cyan-400' },
+  { name: 'Next.js', icon: <SiNextdotjs />, color: 'text-white' },
+  { name: 'Angular', icon: <SiAngular />, color: 'text-red-500' },
+  { name: 'Spring Boot', icon: <SiSpring />, color: 'text-green-500' },
+  { name: 'Node.js', icon: <SiNodedotjs />, color: 'text-green-600' },
+  { name: 'Tailwind', icon: <SiTailwindcss />, color: 'text-cyan-400' },
   { name: 'Sass', icon: <SiSass />, color: 'text-pink-400' },
   { name: 'CSS3', icon: <SiCss3 />, color: 'text-blue-500' },
-  { name: 'Next.js', icon: <SiNextdotjs />, color: 'text-white' },
   { name: 'Vite', icon: <SiVite />, color: 'text-purple-400' },
+  // Banco de dados
+  { name: 'MongoDB', icon: <SiMongodb />, color: 'text-green-500' },
+  { name: 'MySQL', icon: <SiMysql />, color: 'text-blue-700' },
+  { name: 'PostgreSQL', icon: <SiPostgresql />, color: 'text-blue-400' },
+  // Infra & DevOps
+  { name: 'Docker', icon: <SiDocker />, color: 'text-blue-400' },
+  { name: 'AWS', icon: <SiAmazon />, color: 'text-orange-500' },
   { name: 'Git', icon: <SiGit />, color: 'text-orange-600' },
   { name: 'GitHub', icon: <SiGithub />, color: 'text-gray-300' },
-  { name: 'AWS', icon: <SiAmazon />, color: 'text-orange-500' },
-  { name: 'Docker', icon: <SiDocker />, color: 'text-blue-400' },
 ];
 
 export const TechStack = () => {
@@ -50,7 +62,7 @@ export const TechStack = () => {
         <h2 className="text-sm font-bold text-white">{t.techStack.title}</h2>
       </div>
 
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-5 gap-4">
         {allTechItems.map((tech) => (
           <div
             key={tech.name}

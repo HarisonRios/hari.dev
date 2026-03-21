@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { SiNextdotjs, SiTailwindcss } from 'react-icons/si';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -51,3 +52,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+

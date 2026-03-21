@@ -11,7 +11,21 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'FullStack Developer - Harison Rios',
-  description: 'Portfólio - Harison Rios',
+  description: 'Portfólio de Harison Rios — Desenvolvedor FullStack de São Paulo. React, Node.js, Python, Docker, AWS.',
+  metadataBase: new URL('https://harisonrios.vercel.app'),
+  openGraph: {
+    type: 'website',
+    url: 'https://harisonrios.vercel.app',
+    title: 'Harison Rios — FullStack Developer',
+    description: 'Portfólio de Harison Rios — Desenvolvedor FullStack de São Paulo.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Harison Rios — FullStack Developer' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Harison Rios — FullStack Developer',
+    description: 'Portfólio de Harison Rios — FullStack Developer São Paulo.',
+    images: ['/og-image.png'],
+  },
   icons: {
     icon: '/logo.png',
   },

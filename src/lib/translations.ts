@@ -34,8 +34,8 @@ export const translations = {
     },
     // Spotify Card
     spotify: {
-      title: 'Last songs',
-      noSongs: 'No songs found',
+      title: 'Top albums',
+      noSongs: 'No albums found',
     },
     // VSCO Gallery
     vsco: {
@@ -55,6 +55,8 @@ export const translations = {
       prevPhoto: 'Previous photo',
       nextPhoto: 'Next photo',
       goToPhoto: 'Go to photo',
+      loadingMessage: 'Loading your shots...',
+      loadingSubtitle: 'Curating your polaroids ✦',
     },
   },
   pt: {
@@ -92,8 +94,8 @@ export const translations = {
     },
     // Spotify Card
     spotify: {
-      title: 'Últimas músicas',
-      noSongs: 'Nenhuma música encontrada',
+      title: 'Top álbuns',
+      noSongs: 'Nenhum álbum encontrado',
     },
     // VSCO Gallery
     vsco: {
@@ -113,6 +115,8 @@ export const translations = {
       prevPhoto: 'Foto anterior',
       nextPhoto: 'Proxima foto',
       goToPhoto: 'Ir para foto',
+      loadingMessage: 'Carregando suas fotos...',
+      loadingSubtitle: 'Reunindo seus polaroids ✦',
     },
   },
 };

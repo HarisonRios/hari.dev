@@ -1,8 +1,19 @@
+import type { Metadata } from 'next';
 import Background from '@/components/Background';
 import NavigationMenuDemo from '@/components/NavigationMenuDemo';
 import { LanguageToggle } from '@/components/LanguageToggle';
 import { Footer } from '@/components/Footer';
 import { PinnedProjects } from '@/components/PinnedProjects';
+import { PageTransition } from '@/components/PageTransition';
+
+export const metadata: Metadata = {
+  title: 'Projects — Harison Rios',
+  description: 'Explore the pinned GitHub projects by Harison Rios — FullStack Developer specializing in React, Node.js, and cloud infrastructure.',
+  openGraph: {
+    title: 'Projects — Harison Rios',
+    description: 'Pinned GitHub projects by Harison Rios, FullStack Developer.',
+  },
+};
 
 export default function Projects() {
   return (
@@ -18,7 +29,9 @@ export default function Projects() {
 
       <div className="relative z-10 min-h-screen flex items-center justify-center p-4 md:p-6">
         <div className="w-full max-w-4xl mt-20 md:mt-28">
-          <PinnedProjects />
+          <PageTransition>
+            <PinnedProjects />
+          </PageTransition>
         </div>
       </div>
 

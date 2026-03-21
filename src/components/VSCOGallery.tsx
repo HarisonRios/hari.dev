@@ -17,46 +17,54 @@ export const VSCOGallery = () => {
   const { language } = useLanguage();
   const t = translations[language];
   const [photos, setPhotos] = useState<VSCOPhoto[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [fetchStarted, setFetchStarted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const stripRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  useEffect(() => {
-    const fetchVSCOPhotos = async () => {
-      try {
-        const response = await fetch('/api/vsco');
 
-        if (!response.ok) throw new Error('Failed to fetch');
+  const fetchVSCOPhotos = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/vsco');
 
-        const data = await response.json();
+      if (!response.ok) throw new Error('Failed to fetch');
 
-        if (data?.error) {
-          setPhotos([]);
-          setError(true);
-          return;
-        }
+      const data = await response.json();
 
-        if (data.photos && Array.isArray(data.photos)) {
-          setPhotos(data.photos);
-          setError(false);
-        } else {
-          setPhotos([]);
-          setError(false);
-        }
-      } catch (err) {
-        console.error('Error fetching VSCO photos:', err);
+      if (data?.error) {
         setPhotos([]);
         setError(true);
-      } finally {
-        setLoading(false);
+        return;
       }
-    };
 
-    fetchVSCOPhotos();
-  }, []);
+      if (data.photos && Array.isArray(data.photos)) {
+        setPhotos(data.photos);
+        setError(false);
+      } else {
+        setPhotos([]);
+        setError(false);
+      }
+    } catch (err) {
+      console.error('Error fetching VSCO photos:', err);
+      setPhotos([]);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen && !fetchStarted) {
+      setFetchStarted(true);
+      fetchVSCOPhotos();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+
 
   useEffect(() => {
     if (photos.length > 0 && currentIndex >= photos.length) {
@@ -196,19 +204,48 @@ export const VSCOGallery = () => {
           </div>
         </button>
       ) : loading ? (
-        <div className="rounded-2xl border border-slate-700/40 bg-slate-900/30 p-6">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-5 animate-pulse">
-            {[...Array(6)].map((_, index) => (
-              <div
-                key={index}
-                className="bg-slate-200/80 rounded-sm p-3 pb-5 shadow-[0_25px_50px_-35px_rgba(0,0,0,0.8)]"
-              >
-                <div className="aspect-square rounded-sm bg-slate-300/70" />
-                <div className="mt-3 h-3 w-24 bg-slate-300/70 rounded" />
+        <div className="rounded-2xl border border-slate-700/40 bg-slate-900/40 overflow-hidden">
+          {/* Top blurred preview strip */}
+          <div className="relative h-32 overflow-hidden">
+            <div className="absolute inset-0 grid grid-cols-3 gap-1 opacity-20 scale-110 pointer-events-none">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="bg-slate-600 h-full animate-pulse" style={{ animationDelay: `${i * 100}ms` }} />
+              ))}
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/60 to-slate-900/95" />
+          </div>
+
+          {/* Loading message */}
+          <div className="flex flex-col items-center justify-center gap-4 py-8 px-6">
+            {/* Film roll icon */}
+            <div className="relative w-14 h-14 flex items-center justify-center">
+              <div className="absolute inset-0 rounded-full bg-slate-700/50 animate-ping opacity-30" />
+              <div className="relative z-10 w-14 h-14 rounded-full bg-slate-800 border border-slate-600 flex items-center justify-center">
+                <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
               </div>
-            ))}
+            </div>
+
+            <div className="text-center">
+              <p className="text-slate-200 text-sm font-medium mb-1">{t.vsco.loadingMessage}</p>
+              <p className="text-slate-400 text-xs">{t.vsco.loadingSubtitle}</p>
+            </div>
+
+            {/* Animated dots */}
+            <div className="flex gap-1.5">
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce"
+                  style={{ animationDelay: `${i * 150}ms` }}
+                />
+              ))}
+            </div>
           </div>
         </div>
+
       ) : error ? (
         <div className="bg-slate-800/30 border border-slate-700/30 rounded-lg p-8 text-center">
           <p className="text-gray-400 mb-4">{t.vsco.errorTitle}</p>
