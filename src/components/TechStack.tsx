@@ -6,14 +6,10 @@ import {
   SiJavascript,
   SiNodedotjs,
   SiReact,
-  SiSass,
-  SiCss3,
   SiMongodb,
   SiMysql,
   SiGit,
-  SiGithub,
   SiAmazon,
-  SiPhp,
   SiNextdotjs,
   SiVite,
   SiDocker,
@@ -30,7 +26,6 @@ const allTechItems = [
   { name: 'TypeScript', icon: <SiTypescript />, color: 'text-blue-400' },
   { name: 'Javascript', icon: <SiJavascript />, color: 'text-yellow-400' },
   { name: 'Python', icon: <SiPython />, color: 'text-blue-600' },
-  { name: 'PHP', icon: <SiPhp />, color: 'text-purple-500' },
   // Frameworks & Libs
   { name: 'React', icon: <SiReact />, color: 'text-cyan-400' },
   { name: 'Next.js', icon: <SiNextdotjs />, color: 'text-white' },
@@ -38,8 +33,6 @@ const allTechItems = [
   { name: 'Spring Boot', icon: <SiSpring />, color: 'text-green-500' },
   { name: 'Node.js', icon: <SiNodedotjs />, color: 'text-green-600' },
   { name: 'Tailwind', icon: <SiTailwindcss />, color: 'text-cyan-400' },
-  { name: 'Sass', icon: <SiSass />, color: 'text-pink-400' },
-  { name: 'CSS3', icon: <SiCss3 />, color: 'text-blue-500' },
   { name: 'Vite', icon: <SiVite />, color: 'text-purple-400' },
   // Banco de dados
   { name: 'MongoDB', icon: <SiMongodb />, color: 'text-green-500' },
@@ -49,7 +42,6 @@ const allTechItems = [
   { name: 'Docker', icon: <SiDocker />, color: 'text-blue-400' },
   { name: 'AWS', icon: <SiAmazon />, color: 'text-orange-500' },
   { name: 'Git', icon: <SiGit />, color: 'text-orange-600' },
-  { name: 'GitHub', icon: <SiGithub />, color: 'text-gray-300' },
 ];
 
 export const TechStack = () => {
@@ -62,7 +54,7 @@ export const TechStack = () => {
         <h2 className="text-sm font-bold text-white">{t.techStack.title}</h2>
       </div>
 
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-4 gap-6">
         {allTechItems.map((tech) => (
           <div
             key={tech.name}
