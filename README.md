@@ -1,21 +1,27 @@
 # Harison Rios
 
-Sou desenvolvedor full stack de São Paulo, Brasil. Trabalho tanto na interface quanto na lógica por trás das aplicações. Este portfólio reúne projetos que estou desenvolvendo e formas de conhecer meu trabalho e falar comigo.
+![Harison Rios](public/background.png)
 
-## Projetos em destaque
+Opa, sou Harison, desenvolvedor Web Full-Stack. Sou formado em Desenvolvimento de Sistemas pela ETEC de Itaquera e atualmente curso Análise e Desenvolvimento de Sistemas na São Paulo Tech School (SPTech).
+
+Esse é o código do meu portfólio. Reuni aqui alguns projetos que venho fazendo e um pouco das tecnologias que uso. A ideia é mostrar meu trabalho e deixar fácil entrar em contato.
+
+## Projetos
 
 ### PresenceDB
-Aplicação web para acompanhar o tempo de atividade no Discord. Feita com Next.js, TypeScript e PostgreSQL.
+Uma aplicação web para acompanhar o tempo de jogo das atividades no Discord. Feita com Next.js, TypeScript e PostgreSQL.
 
 ### VShop for Gaming
-Aplicativo mobile para acompanhar a loja dos seus jogos favoritos. Feito com Expo e React Native Paper.
+Um app mobile para acompanhar a loja dos seus jogos favoritos. Feito com Expo e React Native Paper.
 
 ### WoBahn
-Mapa com a localização aproximada das linhas de metrô de Viena. Feito com Astro, MapLibre e Server-Sent Events (SSE).
+Um mapa com a localização aproximada das linhas de metrô de Viena. Feito com Astro, MapLibre e Server-Sent Events (SSE).
 
-## Sobre este portfólio
+## Tecnologias
 
-O site tem versões em português e inglês, é responsivo e foi construído com Next.js, React, TypeScript e Tailwind CSS. Também uso GSAP nas animações e EmailJS no formulário de contato.
+No portfólio: Next.js, React, TypeScript, Tailwind CSS, GSAP e EmailJS.
+
+Também trabalho com Java, Spring, Angular, Vite, Python, PHP, Node.js, MySQL, PostgreSQL, MongoDB, AWS e Docker.
 
 ## Rodar localmente
 
@@ -24,7 +30,7 @@ npm install
 npm run dev
 ```
 
-Abra [http://localhost:3000](http://localhost:3000).
+Acesse [http://localhost:3000](http://localhost:3000).
 
 Para gerar e iniciar a versão de produção:
 
