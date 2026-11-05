@@ -1,36 +1,50 @@
-# Harison Rios
+# Hari - 💻✨
 
 ![Harison Rios](public/background.png)
 
-Opa, sou Harison, desenvolvedor Web Full-Stack. Sou formado em Desenvolvimento de Sistemas pela ETEC de Itaquera e atualmente curso Análise e Desenvolvimento de Sistemas na São Paulo Tech School (SPTech).
+Portfólio pessoal de Harison Rios — projetos, tecnologias e um pouco do que venho construindo como desenvolvedor Web Full-Stack.
 
-Esse é o código do meu portfólio. Reuni aqui alguns projetos que venho fazendo e um pouco das tecnologias que uso. A ideia é mostrar meu trabalho e deixar fácil entrar em contato.
+## 👨🏻‍💻 Sobre mim
 
-## Projetos
+Opa, sou Harison. Sou formado em Desenvolvimento de Sistemas pela ETEC de Itaquera e atualmente curso Análise e Desenvolvimento de Sistemas na SPTech. Neste portfólio, reúno projetos que venho fazendo e deixo meus contatos por perto.
 
-### PresenceDB
-Uma aplicação web para acompanhar o tempo de jogo das atividades no Discord. Feita com Next.js, TypeScript e PostgreSQL.
+## 💻 Tecnologias
 
-### VShop for Gaming
-Um app mobile para acompanhar a loja dos seus jogos favoritos. Feito com Expo e React Native Paper.
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=nextjs,react,ts,tailwind,nodejs,postgresql" alt="Next.js, React, TypeScript, Tailwind CSS, Node.js e PostgreSQL" />
+  <br />
+</div>
 
-### WoBahn
-Um mapa com a localização aproximada das linhas de metrô de Viena. Feito com Astro, MapLibre e Server-Sent Events (SSE).
+Também trabalho com Java, Spring, Angular, Vite, Python, PHP, MySQL, MongoDB, AWS e Docker.
 
-## Tecnologias
+## 🚀 Projetos em destaque
 
-No portfólio: Next.js, React, TypeScript, Tailwind CSS, GSAP e EmailJS.
+- **PresenceDB** — aplicação web para acompanhar o tempo de jogo das atividades no Discord. Feita com Next.js, TypeScript e PostgreSQL.
+- **VShop for Gaming** — app mobile para acompanhar a loja dos seus jogos favoritos. Feito com Expo e React Native Paper.
+- **WoBahn** — mapa com a localização aproximada das linhas de metrô de Viena. Feito com Astro, MapLibre e Server-Sent Events (SSE).
 
-Também trabalho com Java, Spring, Angular, Vite, Python, PHP, Node.js, MySQL, PostgreSQL, MongoDB, AWS e Docker.
+## 📚 Rodar localmente
 
-## Rodar localmente
+1. Clone o repositório:
 
-```bash
-npm install
-npm run dev
-```
+   ```bash
+   git clone https://github.com/HarisonRios/hari.dev.git
+   ```
 
-Acesse [http://localhost:3000](http://localhost:3000).
+2. Entre na pasta e instale as dependências:
+
+   ```bash
+   cd hari.dev
+   npm install
+   ```
+
+3. Inicie o servidor local:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Acesse [http://localhost:3000](http://localhost:3000).
 
 Para gerar e iniciar a versão de produção:
 
@@ -39,10 +53,11 @@ npm run build
 npm start
 ```
 
-## Contato
+## 🤝 Contato
 
 - [LinkedIn](https://linkedin.com/in/harisonrios)
 - [GitHub](https://github.com/HarisonRios)
 - [E-mail](mailto:hharison562@gmail.com)
 
-Copyright (c) 2026 Harison Rios. All rights reserved.
+---
+**Nota:** os projetos apresentados estão em desenvolvimento.
