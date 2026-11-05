@@ -1,21 +1,17 @@
-# Hari - 💻✨
+# Portfólio — Harison Rios 💻✨
 
 ![Harison Rios](public/background.png)
 
-Portfólio pessoal de Harison Rios — projetos, tecnologias e um pouco do que venho construindo como desenvolvedor Web Full-Stack.
+Este é o repositório do meu portfólio pessoal. Nele, apresento alguns projetos, mostro as tecnologias usadas no site e deixo meus contatos. O conteúdo está disponível em português e inglês.
 
-## 👨🏻‍💻 Sobre mim
-
-Opa, sou Harison. Sou formado em Desenvolvimento de Sistemas pela ETEC de Itaquera e atualmente curso Análise e Desenvolvimento de Sistemas na SPTech. Neste portfólio, reúno projetos que venho fazendo e deixo meus contatos por perto.
-
-## 💻 Tecnologias
+## 💻 Tecnologias utilizadas
 
 <div align="center">
   <img src="https://skillicons.dev/icons?i=nextjs,react,ts,tailwind,nodejs,postgresql" alt="Next.js, React, TypeScript, Tailwind CSS, Node.js e PostgreSQL" />
   <br />
 </div>
 
-Também trabalho com Java, Spring, Angular, Vite, Python, PHP, MySQL, MongoDB, AWS e Docker.
+O site também usa GSAP para animações e EmailJS no formulário de contato.
 
 ## 🚀 Projetos em destaque
 
@@ -23,7 +19,7 @@ Também trabalho com Java, Spring, Angular, Vite, Python, PHP, MySQL, MongoDB, A
 - **VShop for Gaming** — app mobile para acompanhar a loja dos seus jogos favoritos. Feito com Expo e React Native Paper.
 - **WoBahn** — mapa com a localização aproximada das linhas de metrô de Viena. Feito com Astro, MapLibre e Server-Sent Events (SSE).
 
-## 📚 Rodar localmente
+## 📚 Instalação e uso
 
 1. Clone o repositório:
 
